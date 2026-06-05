@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Puntih — Engineering Student</title>
+  <meta name="description" content="Get in touch with Puntih — collaborations, projects, or just to say hi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <style>
+    .form-group { margin-bottom: 1.4rem; }
+    .form-group label { display: block; font-size: 0.72rem; color: var(--teal); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .form-group input, .form-group textarea {
+      width: 100%; background: rgba(2,8,24,0.8); border: 1px solid var(--border);
+      border-radius: 4px; padding: 12px 16px; color: var(--text); font-family: var(--font-mono);
+      font-size: 0.85rem; outline: none; transition: border-color 0.3s, box-shadow 0.3s; resize: vertical;
+      box-sizing: border-box;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--teal); box-shadow: 0 0 0 2px rgba(0,245,196,0.1);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-dim); opacity: 0.6; }
+
+    /* Contact email glow */
+    .contact-email {
+      display: block;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: clamp(0.7rem, 4vw, 1.6rem);
+      color: var(--teal);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      margin: 2rem auto;
+      text-shadow: 0 0 30px rgba(0,245,196,0.5), 0 0 60px rgba(0,245,196,0.2);
+      transition: text-shadow 0.3s;
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .contact-email:hover {
+      text-shadow: 0 0 40px rgba(0,245,196,0.8), 0 0 80px rgba(0,245,196,0.4);
+    }
+
+    /* Social links */
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.3rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      transition: border-color 0.3s, color 0.3s, background 0.3s, transform 0.2s;
+      background: rgba(255,255,255,0.02);
+    }
+    .social-link:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: rgba(0,245,196,0.05);
+      transform: translateY(-2px);
+    }
+    .social-link svg { flex-shrink: 0; }
+
+    /* Float badge */
+    .float-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1rem;
+      background: rgba(0,245,196,0.06);
+      border: 1px solid rgba(0,245,196,0.2);
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--teal);
+      letter-spacing: 0.06em;
+    }
+    .float-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+      animation: blink-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes blink-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Form success state */
+    #form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      font-family: var(--font-mono);
+      color: var(--teal);
+      font-size: 0.9rem;
+    }
+    #form-success .success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body class="inner-page">
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav>
+    <a href="index.html" class="nav-logo">PUNTIH<span>// dev</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+
+  <div id="side-nav">
+    <div class="side-dot" data-section="reach-out" data-label="Reach Out"></div>
+    <div class="side-dot" data-section="form" data-label="Message"></div>
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- REACH OUT SECTION -->
+    <section id="reach-out" class="section" style="padding-top:140px;padding-bottom:80px;text-align:center;">
+      <div class="container" style="max-width:720px;margin:0 auto;">
+
+        <p class="section-label reveal" style="justify-content:center;display:flex;">Contact</p>
+        <h1 class="section-title reveal reveal-delay-1" style="text-align:center;">Let's Connect</h1>
+        <div class="section-line reveal reveal-delay-2" style="margin:1rem auto 2rem;"></div>
+
+        <p class="reveal reveal-delay-3" style="font-family:var(--font-display);font-size:1.15rem;color:var(--text-dim);line-height:1.8;margin-bottom:2rem;">
+          Whether you have a project idea, a collaboration proposal, or just want to geek out about tech — I'd love to hear from you.
+        </p>
+
+        <a href="mailto:punithkumar062008@gmail.com" class="contact-email reveal reveal-delay-4">
+          punithkumar062008@gmail.com
+        </a>
+
+        <div class="reveal" style="display:flex;justify-content:center;margin-bottom:2.5rem;">
+          <div class="float-badge">
+            <span class="float-badge-dot"></span>
+            Usually responds within 24 hours
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="reveal reveal-delay-1" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2rem;">
+
+          <!-- GitHub -->
+          <a href="https://github.com/punithkumar-060308" class="social-link" id="social-github" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+            GitHub
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/punith-kumar-bs-707426373" class="social-link" id="social-linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+
+          <!-- Google Dev Profile -->
+          <a href="https://g.dev/punithkumar638" class="social-link" id="social-google" aria-label="Google Dev Profile" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 1 1 0-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.969 9.969 0 0 0 12.545 2C7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748l-9.426-.013z"/>
+            </svg>
+            Google
+          </a>
+
+          <!-- Resume PDF -->
+          <a href="assets/resume.pdf" class="social-link" id="social-resume" aria-label="Download Resume" download>
+            <span style="font-size:1rem;">📄</span>
+            Download Resume
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section id="form" class="section" style="padding-bottom:100px;">
+      <div class="container">
+        <p class="section-label reveal" style="justify-content:center;display:flex;">Message</p>
+        <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">Send a Message</h2>
+        <div class="section-line reveal reveal-delay-2" style="margin:1rem auto 2.5rem;"></div>
+
+        <div class="glass-card reveal reveal-delay-3" style="max-width:640px;margin:0 auto;padding:2.5rem;">
+
+          <form id="contact-form" novalidate>
+
+            <div class="form-group">
+              <label for="contact-name">Your Name</label>
+              <input type="text" id="contact-name" name="name" placeholder="John Doe" required autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject_line" placeholder="Project collaboration, internship..." />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="5" placeholder="Tell me about your idea or just say hello..." required></textarea>
+            </div>
+
+            <div id="form-error" style="display:none;background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.3);border-radius:6px;padding:12px 16px;margin-bottom:1rem;font-family:var(--font-mono);font-size:0.78rem;color:#ff6b6b;"></div>
+
+            <button type="submit" class="btn btn-primary" id="contact-submit" style="width:100%;justify-content:center;gap:0.6rem;">
+              <span id="btn-text">Send Message</span>
+              <span id="btn-arrow">→</span>
+              <span id="btn-spinner" style="display:none;width:16px;height:16px;border:2px solid rgba(2,8,24,0.3);border-top-color:var(--bg);border-radius:50%;animation:spin-btn 0.7s linear infinite;"></span>
+            </button>
+
+          </form>
+
+          <!-- Success Panel -->
+          <div id="form-success" style="display:none;text-align:center;padding:2rem 1rem;">
+            <div style="font-size:3rem;margin-bottom:1rem;animation:popIn 0.5s cubic-bezier(0.175,0.885,0.32,1.275);">🎉</div>
+            <p style="font-family:var(--font-display);font-weight:800;font-size:1.3rem;color:var(--teal);margin-bottom:0.5rem;text-shadow:0 0 20px var(--teal-glow);">Message Sent!</p>
+            <p style="color:var(--text-dim);font-size:0.84rem;line-height:1.8;">Thanks for reaching out, I'll get back to you within 24 hours.</p>
+            <button id="send-another" class="btn btn-secondary" style="margin-top:1.5rem;font-size:0.75rem;">Send Another →</button>
+          </div>
+
+        </div>
+
+        <!-- Decorative info strip -->
+        <div class="reveal reveal-delay-4" style="max-width:640px;margin:1.5rem auto 0;display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;">
+          <div style="display:flex;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);">
+            <span style="color:var(--teal);">📍</span> Bangalore
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);">
+            <span style="color:var(--teal);">🕐</span> IST (UTC+5:30)
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);">
+            <span style="color:var(--teal);">🎓</span> First-Year Undergraduate
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);">
+            <span style="color:var(--teal);">💻</span> Open to Collaborations
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      <p>Created with late nights &nbsp;·&nbsp; &copy; 2025 Puntih</p>
+    </footer>
+  </div>
+
+  <script src="js/cursor.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/main.js"></script>
+
+  <style>
+    @keyframes spin-btn { to { transform: rotate(360deg); } }
+    @keyframes popIn {
+      0%   { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+
+  <script>
+    // ── Contact Form → Backend (/send-email) ─────────────────
+    const form       = document.getElementById('contact-form');
+    const successBox = document.getElementById('form-success');
+    const errorBox   = document.getElementById('form-error');
+    const submitBtn  = document.getElementById('contact-submit');
+    const btnText    = document.getElementById('btn-text');
+    const btnArrow   = document.getElementById('btn-arrow');
+    const btnSpinner = document.getElementById('btn-spinner');
+
+    // Clear red borders when user starts typing
+    form.querySelectorAll('input, textarea').forEach(f => {
+      f.addEventListener('input', () => {
+        f.style.borderColor    = '';
+        f.style.boxShadow      = '';
+        errorBox.style.display = 'none';
+      });
+    });
+
+    function setLoading(on) {
+      submitBtn.disabled       = on;
+      btnText.textContent      = on ? 'Sending…' : 'Send Message';
+      btnArrow.style.display   = on ? 'none'         : 'inline';
+      btnSpinner.style.display = on ? 'inline-block'  : 'none';
+      submitBtn.style.opacity  = on ? '0.8'           : '1';
+    }
+
+    function showError(msg) {
+      errorBox.textContent   = '⚠️  ' + msg;
+      errorBox.style.display = 'block';
+      errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function highlightField(el) {
+      el.style.borderColor = '#ff6b6b';
+      el.style.boxShadow   = '0 0 0 2px rgba(255,107,107,0.18)';
+      el.focus();
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorBox.style.display = 'none';
+
+      const name    = document.getElementById('contact-name');
+      const email   = document.getElementById('contact-email');
+      const message = document.getElementById('contact-message');
+      const subject = document.getElementById('contact-subject');
+
+      // Client-side validation
+      if (!name.value.trim())    { highlightField(name);    showError('Please enter your name.');           return; }
+      if (!email.value.trim())   { highlightField(email);   showError('Please enter your email.');          return; }
+      if (!message.value.trim()) { highlightField(message); showError('Please write a message.');           return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+        highlightField(email); showError('Please enter a valid email address.'); return;
+      }
+
+      setLoading(true);
+
+      try {
+        // POST JSON to the Express backend
+        let res;
+        try {
+          res = await fetch('http://localhost:3000/send-email', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name:    name.value.trim(),
+              email:   email.value.trim(),
+              subject: subject.value.trim() || 'Portfolio Contact',
+              message: message.value.trim(),
+            }),
+          });
+        } catch (networkErr) {
+          // Server not running or unreachable
+          throw new Error('Cannot reach the server. Make sure you ran "npm start" in the portfolio folder.');
+        }
+
+        // Guard: make sure response is JSON before parsing
+        const contentType = res.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          throw new Error('Server error. Open the page via http://localhost:3000/contact.html instead of opening the file directly.');
+        }
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          form.style.display       = 'none';
+          successBox.style.display = 'block';
+        } else {
+          throw new Error(data.error || 'Something went wrong.');
+        }
+      } catch (err) {
+        console.error('Form error:', err);
+        showError(err.message || 'Could not send message. Please email: punithkumar062008@gmail.com');
+        setLoading(false);
+      }
+    });
+
+    // Reset form to send another message
+    document.getElementById('send-another').addEventListener('click', () => {
+      form.reset();
+      form.style.display       = 'block';
+      successBox.style.display = 'none';
+      setLoading(false);
+    });
+  </script>
+</body>
+</html>

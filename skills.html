@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills | Puntih — Engineering Student</title>
+  <meta name="description" content="Explore my technical skills — programming languages, web development, CS fundamentals and tools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body class="inner-page">
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav>
+    <a href="index.html" class="nav-logo">PUNTIH<span>// dev</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html" class="active">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html" class="active">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div id="side-nav">
+    <div class="side-dot" data-section="languages" data-label="Languages"></div>
+    <div class="side-dot" data-section="web" data-label="Web Dev"></div>
+    <div class="side-dot" data-section="cs" data-label="CS Concepts"></div>
+    <div class="side-dot" data-section="tools" data-label="Tools"></div>
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- PAGE INTRO HERO -->
+    <section class="section" style="padding-top:140px;padding-bottom:60px;">
+      <div class="container">
+        <p class="section-label reveal">Skills</p>
+        <h1 class="section-title reveal reveal-delay-1">My Toolkit</h1>
+        <div class="section-line reveal reveal-delay-2"></div>
+        <p class="reveal reveal-delay-3" style="max-width:560px;font-family:var(--font-mono);font-size:0.9rem;color:var(--text-dim);line-height:1.9;margin-top:1.2rem;">
+          A growing collection of tools, languages, and concepts I've picked up as a first-year engineering student.
+        </p>
+      </div>
+    </section>
+
+    <!-- LANGUAGES SECTION -->
+    <section id="languages" class="section">
+      <div class="container">
+        <p class="section-label reveal">Languages</p>
+        <h2 class="section-title reveal reveal-delay-1">Programming Languages</h2>
+        <div class="section-line reveal reveal-delay-2"></div>
+
+        <div class="grid-4" style="margin-top:2.5rem;">
+
+          <!-- Python -->
+          <div class="skill-card reveal reveal-delay-1">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">Python</div>
+            <div class="skill-tags">
+              <span class="tag">Functions</span>
+              <span class="tag">Error Handling</span>
+              <span class="tag">Modules & Packages</span>
+              <span class="tag">OOP</span>
+              <span class="tag">Data Types & Structures</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Overall</span><span>60%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="60%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Problem Solving</span><span>40%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="40%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+          </div>
+
+          <!-- C / C++ -->
+          <div class="skill-card reveal reveal-delay-2">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C/C++" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">C</div>
+            <div class="skill-tags">
+              <span class="tag">Pointers</span>
+              <span class="tag">Memory</span>
+              <span class="tag">Functions</span>
+              <span class="tag">Arrays & Strings</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>C</span><span>65%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="65%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+            <!-- <div class="skill-progress">
+              <div class="progress-label"><span>C++</span><span>55%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="55%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div> -->
+          </div>
+
+          <!-- JavaScript -->
+          <!-- <div class="skill-card reveal reveal-delay-3">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">JavaScript</div>
+            <div class="skill-tags">
+              <span class="tag">DOM</span>
+              <span class="tag">Events</span>
+              <span class="tag">ES6+</span>
+              <span class="tag">Async</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Core JS</span><span>60%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="60%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Web APIs</span><span>50%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="50%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+          </div> -->
+
+          <!-- Java -->
+          <!-- <div class="skill-card reveal reveal-delay-4">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">Java</div>
+            <div class="skill-tags">
+              <span class="tag">OOP</span>
+              <span class="tag">Classes</span>
+              <span class="tag">JVM</span>
+              <span class="tag">Basics</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Fundamentals</span><span>50%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="50%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WEB DEVELOPMENT SECTION -->
+    <section id="web" class="section">
+      <div class="container">
+        <p class="section-label reveal">Web</p>
+        <h2 class="section-title reveal reveal-delay-1">Web Development</h2>
+        <div class="section-line reveal reveal-delay-2"></div>
+
+        <div class="grid-3" style="margin-top:2.5rem;">
+
+          <!-- HTML5 -->
+          <div class="skill-card reveal reveal-delay-1">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">HTML5</div>
+            <div class="skill-tags">
+              <span class="tag">Semantic</span>
+              <span class="tag">Accessibility</span>
+              <!-- <span class="tag">SEO</span> -->
+              <!-- <span class="tag">Canvas</span> -->
+              <span class="tag">Forms</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Proficiency</span><span>65%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="65%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+          </div>
+
+          <!-- CSS3 -->
+          <div class="skill-card reveal reveal-delay-2">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">CSS3</div>
+            <div class="skill-tags">
+              <span class="tag">Flexbox</span>
+              <span class="tag">Grid</span>
+              <!-- <span class="tag">Animations</span> -->
+              <span class="tag">Responsive</span>
+              <span class="tag">Variables</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Proficiency</span><span>65%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="65%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+          </div>
+
+          <!-- JavaScript Web -->
+          <!-- <div class="skill-card reveal reveal-delay-3">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">JavaScript (Web)</div>
+            <div class="skill-tags">
+              <span class="tag">Fetch API</span>
+              <span class="tag">Local Storage</span>
+              <span class="tag">DOM</span>
+              <span class="tag">Events</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Proficiency</span><span>60%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="60%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CS CONCEPTS SECTION -->
+    <!-- <section id="cs" class="section">
+      <div class="container">
+        <p class="section-label reveal">Fundamentals</p>
+        <h2 class="section-title reveal reveal-delay-1">CS Concepts</h2>
+        <div class="section-line reveal reveal-delay-2"></div>
+
+        <div class="grid-4" style="margin-top:2.5rem;"> -->
+
+          <!-- Data Structures -->
+          <!-- <div class="skill-card reveal reveal-delay-1">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="Data Structures" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">Data Structures</div>
+            <div class="skill-tags">
+              <span class="tag">Arrays</span>
+              <span class="tag">Linked Lists</span>
+              <span class="tag">Stacks</span>
+              <span class="tag">Queues</span>
+              <span class="tag">Trees</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Proficiency</span><span>65%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="65%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+          </div> -->
+
+          <!-- Algorithms -->
+          <!-- <div class="skill-card reveal reveal-delay-2">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Algorithms" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">Algorithms</div>
+            <div class="skill-tags">
+              <span class="tag">Sorting</span>
+              <span class="tag">Searching</span>
+              <span class="tag">Recursion</span>
+              <span class="tag">Dynamic Programming</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Proficiency</span><span>55%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="55%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+          </div> -->
+
+          <!-- DBMS -->
+          <!-- <div class="skill-card reveal reveal-delay-3">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="DBMS" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">DBMS</div>
+            <div class="skill-tags">
+              <span class="tag">SQL</span>
+              <span class="tag">ER Diagrams</span>
+              <span class="tag">Normalization</span>
+              <span class="tag">Queries</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Proficiency</span><span>50%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="50%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+          </div> -->
+
+          <!-- OS Concepts -->
+          <!-- <div class="skill-card reveal reveal-delay-4">
+            <div class="skill-icon" style="display:flex;align-items:center;justify-content:center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="OS Concepts" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div class="skill-cat">OS Concepts</div>
+            <div class="skill-tags">
+              <span class="tag">Scheduling</span>
+              <span class="tag">Memory</span>
+              <span class="tag">File Systems</span>
+              <span class="tag">Processes</span>
+            </div>
+            <div class="skill-progress">
+              <div class="progress-label"><span>Proficiency</span><span>45%</span></div>
+              <div class="progress-bar"><div class="progress-fill" data-width="45%" style="width:0%;background:linear-gradient(90deg,#00f5c4,#7b5ea7);height:4px;border-radius:2px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);"></div></div>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS SECTION -->
+    <section id="tools" class="section">
+      <div class="container">
+        <p class="section-label reveal">Tools</p>
+        <h2 class="section-title reveal reveal-delay-1">Dev Tools &amp; Platforms</h2>
+        <div class="section-line reveal reveal-delay-2"></div>
+
+        <div class="grid-4" style="margin-top:2.5rem;">
+
+          <!-- Git -->
+          <div class="glass-card reveal reveal-delay-1" style="text-align:center;padding:2rem 1.5rem;">
+            <div style="font-size:2.4rem;margin-bottom:1rem;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--text);margin-bottom:1rem;">Git</div>
+            <div class="skill-tags" style="justify-content:center;">
+              <span class="tag">Version Control</span>
+              <span class="tag">Branching</span>
+              <span class="tag">GitHub</span>
+            </div>
+          </div>
+
+          <!-- VS Code -->
+          <div class="glass-card reveal reveal-delay-2" style="text-align:center;padding:2rem 1.5rem;">
+            <div style="font-size:2.4rem;margin-bottom:1rem;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--text);margin-bottom:1rem;">VS Code</div>
+            <div class="skill-tags" style="justify-content:center;">
+              <span class="tag">Extensions</span>
+              <span class="tag">Debugging</span>
+              <span class="tag">IntelliSense</span>
+            </div>
+          </div>
+
+          <!-- Antigravity -->
+          <div class="glass-card reveal reveal-delay-3" style="text-align:center;padding:2rem 1.5rem;">
+            <div style="font-size:2.4rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 0 10px rgba(0,245,196,0.5));">
+                <defs>
+                  <linearGradient id="ag-grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#00f5c4"/>
+                    <stop offset="100%" stop-color="#7b5ea7"/>
+                  </linearGradient>
+                </defs>
+                <!-- Rocket body -->
+                <path d="M24 4 C24 4, 34 14, 34 26 L24 36 L14 26 C14 14, 24 4, 24 4Z" fill="url(#ag-grad)" opacity="0.9"/>
+                <!-- Rocket window -->
+                <circle cx="24" cy="22" r="4" fill="#0a0a12" stroke="#00f5c4" stroke-width="1.5"/>
+                <!-- Left fin -->
+                <path d="M14 26 L8 34 L16 30Z" fill="url(#ag-grad)" opacity="0.7"/>
+                <!-- Right fin -->
+                <path d="M34 26 L40 34 L32 30Z" fill="url(#ag-grad)" opacity="0.7"/>
+                <!-- Flame -->
+                <path d="M20 36 Q24 44 28 36 Q24 40 20 36Z" fill="#00f5c4" opacity="0.8"/>
+                <path d="M22 36 Q24 42 26 36 Q24 39 22 36Z" fill="#fff" opacity="0.6"/>
+              </svg>
+            </div>
+            <div style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--text);margin-bottom:1rem;">Antigravity</div>
+            <div class="skill-tags" style="justify-content:center;">
+              <span class="tag">AI Coding</span>
+              <span class="tag">Agentic AI</span>
+              <span class="tag">Dev Assist</span>
+            </div>
+          </div>
+
+          <!-- Figma -->
+          <!-- <div class="glass-card reveal reveal-delay-4" style="text-align:center;padding:2rem 1.5rem;">
+            <div style="font-size:2.4rem;margin-bottom:1rem;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" style="width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,245,196,0.3));"></div>
+            <div style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--text);margin-bottom:1rem;">Figma</div>
+            <div class="skill-tags" style="justify-content:center;">
+              <span class="tag">UI Design</span>
+              <span class="tag">Wireframing</span>
+              <span class="tag">Prototyping</span>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Created with late nights &nbsp;�&nbsp; &copy; 2025 Puntih</p>
+    </footer>
+  </div>
+
+  <script src="js/cursor.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

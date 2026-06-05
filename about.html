@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Puntih &mdash; Engineering Student</title>
+  <meta name="description"
+    content="Learn more about Puntih &mdash; a first-year AI &amp; ML undergraduate at BMS College of Engineering, Bangalore." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <style>
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.4
+      }
+    }
+
+    @keyframes floatBadge {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-4px)
+      }
+    }
+
+    @keyframes rowIn {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* ── Sticky photo layout ───────────────────────────────── */
+    .about-sticky-wrap {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 4rem;
+      align-items: center;
+      overflow: visible;
+    }
+
+    .about-bio-col {
+      min-width: 0;
+    }
+
+    .about-photo-col {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 40px;
+      overflow: visible;
+    }
+
+    /* ── Photo card ─────────────────────────────────────────── */
+    .profile-card {
+      position: relative;
+      width: 280px;
+      height: 350px;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 0 0 1px rgba(0, 245, 196, 0.18), 0 8px 40px rgba(0, 0, 0, 0.5);
+      transition: box-shadow 0.4s, transform 0.4s;
+    }
+
+    .profile-card:hover {
+      box-shadow: 0 0 30px rgba(0, 245, 196, 0.4), 0 0 80px rgba(0, 245, 196, 0.12), 0 8px 40px rgba(0, 0, 0, 0.6);
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .profile-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform 0.5s ease, filter 0.4s;
+    }
+
+    .profile-card:hover img {
+      transform: scale(1.07);
+      filter: brightness(0.4);
+    }
+
+    /* ── Hover overlay details ──────────────────────────────── */
+    .profile-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.6rem 1.4rem;
+      background: linear-gradient(0deg, rgba(2, 8, 24, 0.97) 0%, rgba(2, 8, 24, 0.5) 55%, transparent 100%);
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+
+    .profile-card:hover .profile-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .po-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      text-shadow: 0 0 16px rgba(0, 245, 196, 0.5);
+      white-space: nowrap;
+    }
+
+    .po-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(0, 245, 196, 0.25);
+      margin-bottom: 0.75rem;
+    }
+
+    .po-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      font-size: 0.71rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-family: var(--font-mono);
+      margin-bottom: 0.45rem;
+      line-height: 1.5;
+    }
+
+    .po-icon {
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .po-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.64rem;
+      font-family: var(--font-mono);
+      color: var(--teal);
+      border: 1px solid rgba(0, 245, 196, 0.3);
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-top: 0.5rem;
+    }
+
+    .po-badge-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--teal);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--teal);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+
+    /* ── Photo hover group ────────────────────────────────── */
+    .photo-hover-group {
+      position: relative;
+      width: 352px;
+      height: 422px;
+      flex-shrink: 0;
+    }
+
+    /* Details fill the spot where the photo was */
+    .side-details {
+      position: absolute;
+      top: 36px;
+      left: 36px;
+      width: 260px;
+      min-height: 300px;
+      background: rgba(2, 8, 24, 0.95);
+      border: 1px solid rgba(0, 245, 196, 0.28);
+      border-radius: 14px;
+      padding: 1.4rem 1.2rem;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 0 40px rgba(0, 245, 196, 0.08), 0 8px 32px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: scale(0.88) translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.4s ease 0.15s, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+      z-index: 0;
+    }
+
+    .photo-hover-group:hover .side-details {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Staggered row entrance */
+    .side-details .po-row {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .photo-hover-group:hover .side-details .po-row:nth-child(3) {
+      animation: rowIn 0.3s ease 0.3s forwards;
+    }
+
+    .photo-hover-group:hover .side-details .po-row:nth-child(4) {
+      animation: rowIn 0.3s ease 0.4s forwards;
+    }
+
+    .photo-hover-group:hover .side-details .po-row:nth-child(5) {
+      animation: rowIn 0.3s ease 0.5s forwards;
+    }
+
+    .photo-hover-group:hover .side-details .po-row:nth-child(6) {
+      animation: rowIn 0.3s ease 0.6s forwards;
+    }
+
+    /* Photo frame moves FAR right + tilts */
+    .photo-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 352px;
+      height: 422px;
+      flex-shrink: 0;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .photo-hover-group:hover .photo-frame {
+      transform: translateX(200px) rotate(8deg);
+    }
+
+    /* Rings BEHIND the card */
+    .photo-frame .ring-1 {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+      border: 1.5px dashed rgba(0, 245, 196, 0.4);
+      border-radius: 32px;
+      animation: spin 20s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .photo-frame .ring-2 {
+      position: absolute;
+      inset: 4px;
+      border: 1px dashed rgba(123, 94, 167, 0.3);
+      border-radius: 48px;
+      animation: spin 35s linear infinite reverse;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Card ON TOP of rings */
+    .profile-card {
+      position: absolute;
+      top: 36px;
+      left: 36px;
+      width: 280px;
+      height: 350px;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      z-index: 1;
+      box-shadow: 0 0 0 1px rgba(0, 245, 196, 0.18), 0 8px 40px rgba(0, 0, 0, 0.5);
+      transition: box-shadow 0.4s;
+    }
+
+    .photo-hover-group:hover .profile-card {
+      box-shadow: 0 0 30px rgba(0, 245, 196, 0.35), 0 12px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ── Hover hint label ───────────────────────────────────── */
+    .photo-hint {
+      font-size: 0.67rem;
+      font-family: var(--font-mono);
+      color: var(--text-faint);
+      letter-spacing: 0.12em;
+      text-align: center;
+      animation: floatBadge 2.5s ease-in-out infinite;
+    }
+
+    /* ── Info chips below photo ─────────────────────────────── */
+    .info-chips {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .info-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+      background: var(--glass);
+      border: 1px solid var(--border-dim);
+      border-radius: 6px;
+      padding: 8px 12px;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .info-chip:hover {
+      border-color: rgba(0, 245, 196, 0.3);
+      color: var(--teal);
+    }
+
+    .info-chip-icon {
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-sticky-wrap {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .about-photo-col {
+        position: static;
+      }
+
+      .profile-ring-wrap,
+      .profile-card {
+        width: 240px;
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body class="inner-page">
+  <!-- Cursor elements -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Canvases -->
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">PUNTIH<span>// dev</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- SIDE NAV -->
+  <div id="side-nav">
+    <div class="side-dot active" data-section="intro" data-label="Intro"></div>
+    <div class="side-dot" data-section="stats" data-label="Numbers"></div>
+    <div class="side-dot" data-section="timeline" data-label="Timeline"></div>
+  </div>
+
+  <div class="page-wrapper">
+    <main>
+
+      <!-- ═══════════════════════════════ INTRO ═══════════════════════════════ -->
+      <section id="intro" class="section">
+        <div class="container">
+          <div class="about-sticky-wrap">
+
+            <!-- LEFT: Bio -->
+            <div class="about-bio-col">
+              <div class="section-header reveal">
+                <p class="section-label">About</p>
+                <h2 class="section-title">Who I Am</h2>
+                <div class="section-line"></div>
+              </div>
+
+              <p class="about-para reveal reveal-delay-1">
+                Hey! I'm <strong style="color:var(--teal)">Puntih</strong>, a first-year
+                <strong style="color:var(--purple)">AI &amp; Machine Learning</strong> undergraduate at
+                <strong style="color:var(--teal)">BMS College of Engineering, Bangalore</strong>.
+                Passionate about building things that matter &mdash; whether it's writing code at 2AM
+                or sketching circuit ideas on paper, I'm all in.
+              </p>
+              <p class="about-para reveal reveal-delay-2">
+                I believe in learning by doing. From small Python scripts to exploring data structures
+                and algorithms, I'm on a continuous mission to turn curiosity into capability.
+              </p>
+              <p class="about-para reveal reveal-delay-3">
+                Outside of academics, I love stargazing, reading about emerging tech, exploring math
+                rabbit holes, and occasionally building weird little projects just to see if they work.
+              </p>
+
+              <div class="float-badge reveal reveal-delay-3" style="margin-bottom:2rem;">
+                <span class="float-badge-dot"></span>
+                Open to Opportunities
+              </div>
+
+              <div class="about-btns reveal reveal-delay-4">
+                <a href="assets/resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download
+                  Resume</a>
+                <a href="contact.html" class="btn btn-secondary">Contact Me</a>
+              </div>
+            </div>
+
+            <!-- RIGHT: Sticky Photo -->
+            <div class="about-photo-col reveal reveal-delay-2">
+
+              <!-- Hover group: details slide left, photo tilts right -->
+              <div class="photo-hover-group">
+
+                <!-- Details panel (left side on hover) -->
+                <div class="side-details">
+                  <div class="po-name">Punith Kumar B S</div>
+                  <div class="po-divider"></div>
+                  <div class="po-row"><span class="po-icon">&#127963;</span><span>BMS College of Engineering</span>
+                  </div>
+                  <div class="po-row"><span class="po-icon">&#129302;</span><span>AI &amp; Machine Learning</span></div>
+                  <div class="po-row"><span class="po-icon">&#127891;</span><span>1st Year Undergraduate</span></div>
+                  <div class="po-row"><span class="po-icon">&#128205;</span><span>Bangalore, India</span></div>
+                </div>
+
+                <!-- Photo frame with rings behind card -->
+                <div class="photo-frame">
+                  <div class="ring-1"></div>
+                  <div class="ring-2"></div>
+                  <div class="profile-card">
+                    <img src="assets/images/profile.jpg" alt="Punith Kumar B S"
+                      onerror="this.src='https://placehold.co/400x500/020818/00f5c4?text=PUNTIH&font=syne'" />
+                  </div>
+                </div>
+
+              </div>
+
+              <p class="photo-hint">// hover to reveal details</p>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════ STATS ═══════════════════════════════ -->
+      <section id="stats" class="section">
+        <div class="container">
+
+          <div class="section-header reveal" style="text-align:center;">
+            <p class="section-label">Numbers</p>
+            <h2 class="section-title">By The Numbers</h2>
+            <div class="section-line" style="margin:0 auto;"></div>
+          </div>
+
+          <div class="grid-4" style="margin-top:3rem;">
+            <div class="stat-card glass-card reveal reveal-delay-1">
+              <span class="stat-number">5+</span>
+              <span class="stat-label">Projects Built</span>
+            </div>
+            <div class="stat-card glass-card reveal reveal-delay-2">
+              <span class="stat-number">4</span>
+              <span class="stat-label">Languages Learned</span>
+            </div>
+            <div class="stat-card glass-card reveal reveal-delay-3">
+              <span class="stat-number">2</span>
+              <span class="stat-label">Months of Experience</span>
+            </div>
+            <div class="stat-card glass-card reveal reveal-delay-4">
+              <span class="stat-number">&#8734;</span>
+              <span class="stat-label">Curiosity Level</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════ TIMELINE ═══════════════════════════════ -->
+      <section id="timeline" class="section">
+        <div class="container">
+
+          <div class="section-header reveal" style="text-align:center;">
+            <p class="section-label">Journey</p>
+            <h2 class="section-title">My Timeline</h2>
+            <div class="section-line" style="margin:0 auto;"></div>
+          </div>
+
+          <div class="timeline" style="margin-top:3.5rem;">
+
+            <div class="timeline-item reveal reveal-delay-1">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content glass-card">
+                <span class="timeline-year">2025</span>
+                <h3 class="timeline-title">Started Engineering</h3>
+                <p class="timeline-sub">Joined B.E AI &amp; ML at BMS College of Engineering, Bangalore &mdash; fell in
+                  love with CS fundamentals.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal reveal-delay-2">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content glass-card">
+                <span class="timeline-year">2025</span>
+                <h3 class="timeline-title">First Program</h3>
+                <p class="timeline-sub">Wrote my first C program. It printed 'Hello World' and I was hooked.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal reveal-delay-2">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content glass-card">
+                <span class="timeline-year">2026</span>
+                <h3 class="timeline-title">Python Journey Begins</h3>
+                <p class="timeline-sub">Built my first Python script — a small calculator that sparked my interest in
+                  coding.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal-delay-4">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content glass-card">
+                <span class="timeline-year">2026</span>
+                <h3 class="timeline-title">ACM Club Tech Team</h3>
+                <p class="timeline-sub">Selected as a Tech Team Member of the ACM Club, contributing to projects and
+                  events.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal reveal-delay-3">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content glass-card">
+                <span class="timeline-year">2026</span>
+                <h3 class="timeline-title">Web Development</h3>
+                <p class="timeline-sub">Took my first steps into web development, learning the basics of how websites
+                  work.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal reveal-delay-4">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content glass-card">
+                <span class="timeline-year">2026</span>
+                <h3 class="timeline-title">Built Small Webpages</h3>
+                <p class="timeline-sub">Created simple webpages using HTML and CSS, experimenting with layouts and
+                  styles.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal reveal-delay-4">
+              <div class="timeline-dot timeline-dot-last" aria-hidden="true"></div>
+              <div class="timeline-content glass-card">
+                <span class="timeline-year">2026</span>
+                <h3 class="timeline-title">Open Source Explorer</h3>
+                <p class="timeline-sub">Made my first GitHub commit. The journey continues...</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>Created with late nights &nbsp;&middot;&nbsp; &copy; 2026 Puntih</p>
+    </footer>
+  </div>
+
+  <script src="js/cursor.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

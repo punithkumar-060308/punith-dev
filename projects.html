@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Puntih � Engineering Student</title>
+  <meta name="description" content="Explore projects built by Puntih � a first-year engineering undergraduate learning and building one project at a time." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body class="inner-page">
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <canvas id="star-canvas"></canvas>
+  <canvas id="particles-canvas"></canvas>
+
+  <nav>
+    <a href="index.html" class="nav-logo">PUNTIH<span>// dev</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div id="side-nav">
+    <div class="side-dot" data-section="featured" data-label="Featured"></div>
+    <div class="side-dot" data-section="all" data-label="All Projects"></div>
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- PAGE INTRO HERO -->
+    <section class="section" style="padding-top:140px;padding-bottom:60px;">
+      <div class="container">
+        <p class="section-label reveal">Work</p>
+        <h1 class="section-title reveal reveal-delay-1">Things I've Built</h1>
+        <div class="section-line reveal reveal-delay-2"></div>
+        <p class="reveal reveal-delay-3" style="max-width:560px;font-family:var(--font-mono);font-size:0.9rem;color:var(--text-dim);line-height:1.9;margin-top:1.2rem;">
+          Projects are how I learn best. Each one taught me something new � about code, about problem-solving, about myself.
+        </p>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section id="featured" class="section">
+      <div class="container">
+        <p class="section-label reveal">Highlights</p>
+        <h2 class="section-title reveal reveal-delay-1">Featured Projects</h2>
+        <div class="section-line reveal reveal-delay-2"></div>
+
+        <div class="proj-feat-grid" style="margin-top:2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;">
+
+          <!-- Harvesting Technology -->
+          <div class="proj-feat-card reveal reveal-delay-1">
+            <div class="proj-feat-top">
+              <span class="proj-feat-emoji">🌾</span>
+              <span class="tag tag-teal" style="font-size:0.65rem;">✓ Complete</span>
+            </div>
+            <h3 class="proj-feat-title">Harvesting Technology</h3>
+          </div>
+
+          <!-- SugarSync -->
+          <div class="proj-feat-card reveal reveal-delay-2">
+            <div class="proj-feat-top">
+              <span class="proj-feat-emoji">🍬</span>
+              <span class="tag tag-teal" style="font-size:0.65rem;">✓ Complete</span>
+            </div>
+            <h3 class="proj-feat-title">SugarSync</h3>
+          </div>
+
+          <!-- RideBuddy Connect -->
+          <div class="proj-feat-card reveal reveal-delay-3">
+            <div class="proj-feat-top">
+              <span class="proj-feat-emoji">🏍️</span>
+              <span class="tag tag-teal" style="font-size:0.65rem;">✓ Complete</span>
+            </div>
+            <h3 class="proj-feat-title">RideBuddy Connect</h3>
+          </div>
+
+          <!-- Portfolio Website -->
+          <div class="proj-feat-card reveal reveal-delay-4">
+            <div class="proj-feat-top">
+              <span class="proj-feat-emoji">🚀</span>
+              <span class="tag tag-teal" style="font-size:0.65rem;">✓ Complete</span>
+            </div>
+            <h3 class="proj-feat-title">Portfolio Website</h3>
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALL PROJECTS ACCORDION -->
+    <section id="all" class="section">
+      <div class="container">
+        <p class="section-label reveal">Archive</p>
+        <h2 class="section-title reveal reveal-delay-1">All Projects</h2>
+        <div class="section-line reveal reveal-delay-2"></div>
+
+        <div class="projects-list reveal reveal-delay-3" style="margin-top:2.5rem;">
+          <!-- 01 Harvesting Technology -->
+          <div class="project-row" data-expandable style="border-top:1px solid var(--border);padding:1.4rem 0;cursor:pointer;transition:background 0.2s;">
+            <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+              <span class="proj-num" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--teal);min-width:28px;">01</span>
+              <div class="proj-content" style="flex:1;min-width:200px;">
+                <div class="proj-name" style="font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--text);">Harvesting Technology</div>
+                <div class="proj-desc" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-dim);margin-top:0.3rem;">A platform for Karnataka farmers: enter your taluk pincode to get local climate updates, region-specific crop recommendations, step-by-step growing guides, and organic fertilizer suggestions.</div>
+              </div>
+              <div class="proj-stack" style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                <span class="proj-tag">Lovable-vibe coding</span>
+                <span class="proj-tag">Weather API</span>
+                <span class="proj-tag">TypeScript</span>
+              </div>
+              <div class="proj-arrow" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);white-space:nowrap;display:flex;align-items:center;gap:0.4rem;">
+                <span style="font-size:0.68rem;opacity:0.6;">click to expand</span>
+                <span style="transition:transform 0.3s;display:inline-block;">→</span>
+              </div>
+            </div>
+            <div class="proj-expand" style="padding:0 0 0 44px;font-size:0.82rem;color:#8899b8;line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.45s cubic-bezier(0.16,1,0.3,1),padding 0.3s;">
+              Built to help Karnataka farmers access actionable, localised farming data without needing a lab or expert. Taught me how to integrate real-world APIs and think about user impact.
+            </div>
+          </div>
+
+          <!-- 02 SugarSync -->
+          <div class="project-row" data-expandable style="border-top:1px solid var(--border);padding:1.4rem 0;cursor:pointer;transition:background 0.2s;">
+            <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+              <span class="proj-num" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--teal);min-width:28px;">02</span>
+              <div class="proj-content" style="flex:1;min-width:200px;">
+                <div class="proj-name" style="font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--text);">SugarSync</div>
+                <div class="proj-desc" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-dim);margin-top:0.3rem;">Farmers upload a sugarcane photo, and SugarSync's AI instantly analyzes color, thickness, fiber texture, and dryness. Provides a quality report with sucrose percentage, moisture level, freshness score, and expected yield — no lab testing required.</div>
+              </div>
+              <div class="proj-stack" style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                <span class="proj-tag">HTML</span>
+                <span class="proj-tag">JavaScript (JS)</span>
+                <span class="proj-tag">CSS</span>
+                <span class="proj-tag">Lovable-vibe coding</span>
+              </div>
+              <div class="proj-arrow" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);white-space:nowrap;display:flex;align-items:center;gap:0.4rem;">
+                <span style="font-size:0.68rem;opacity:0.6;">click to expand</span>
+                <span style="transition:transform 0.3s;display:inline-block;">→</span>
+              </div>
+            </div>
+            <div class="proj-expand" style="padding:0 0 0 44px;font-size:0.82rem;color:#8899b8;line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.45s cubic-bezier(0.16,1,0.3,1),padding 0.3s;">
+              An AI-powered agritech tool that removes the need for expensive lab testing. This project pushed me to explore image analysis and learned how AI can solve real problems for farmers.
+            </div>
+          </div>
+
+          <!-- 03 RideBuddy Connect -->
+          <div class="project-row" data-expandable style="border-top:1px solid var(--border);padding:1.4rem 0;cursor:pointer;transition:background 0.2s;">
+            <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+              <span class="proj-num" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--teal);min-width:28px;">03</span>
+              <div class="proj-content" style="flex:1;min-width:200px;">
+                <div class="proj-name" style="font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--text);">RideBuddy Connect</div>
+                <div class="proj-desc" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-dim);margin-top:0.3rem;">A Bengaluru-based platform for motorcycle enthusiasts to plan and enjoy group rides. Offers route planning, live GPS tracking, safety features, and a community-driven experience for riders across Karnataka.</div>
+              </div>
+              <div class="proj-stack" style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                <span class="proj-tag">TypeScript (TS)</span>
+                <span class="proj-tag">Tailwind CSS</span>
+                <span class="proj-tag">Supabase</span>
+                <span class="proj-tag">Lovable-vibe coding</span>
+              </div>
+              <div class="proj-arrow" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);white-space:nowrap;display:flex;align-items:center;gap:0.4rem;">
+                <span style="font-size:0.68rem;opacity:0.6;">click to expand</span>
+                <span style="transition:transform 0.3s;display:inline-block;">→</span>
+              </div>
+            </div>
+            <div class="proj-expand" style="padding:0 0 0 44px;font-size:0.82rem;color:#8899b8;line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.45s cubic-bezier(0.16,1,0.3,1),padding 0.3s;">
+              Built for the riding community in Karnataka. First time working with Supabase for real-time data and GPS tracking. Learned a ton about full-stack architecture and community-driven products.
+            </div>
+          </div>
+           <!-- 04 Portfolio Website -->
+          <div class="project-row" data-expandable style="border-top:1px solid var(--border);padding:1.4rem 0;cursor:pointer;transition:background 0.2s;border-bottom:1px solid var(--border);">
+            <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+              <span class="proj-num" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--teal);min-width:28px;">04</span>
+              <div class="proj-content" style="flex:1;min-width:200px;">
+                <div class="proj-name" style="font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--text);">Portfolio Website</div>
+                <div class="proj-desc" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-dim);margin-top:0.3rem;">This very website! A dark sci-fi themed portfolio built from scratch with pure HTML, CSS & vanilla JS — custom cursor, canvas stars, glassmorphism, and a Node.js contact backend.</div>
+              </div>
+              <div class="proj-stack" style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+                <span class="proj-tag">HTML</span>
+                <span class="proj-tag">CSS</span>
+                <span class="proj-tag">JavaScript</span>
+                <span class="proj-tag">Node.js</span>
+              </div>
+              <div class="proj-arrow" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-dim);white-space:nowrap;display:flex;align-items:center;gap:0.4rem;">
+                <span style="font-size:0.68rem;opacity:0.6;">click to expand</span>
+                <span style="transition:transform 0.3s;display:inline-block;">→</span>
+              </div>
+            </div>
+            <div class="proj-expand" style="padding:0 0 0 44px;font-size:0.82rem;color:#8899b8;line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.45s cubic-bezier(0.16,1,0.3,1),padding 0.3s;">
+              My most ambitious frontend project to date. I designed and coded every pixel — from the animated canvas star field and orbit rings, to the custom magnetic cursor and scroll-reveal effects. The contact form is powered by a Node.js + Nodemailer backend. No libraries, no frameworks — just raw web fundamentals pushed to their limits.
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </section>
+    <footer>
+      <p>Created with late nights &nbsp;·&nbsp; &copy; 2025 Puntih</p>
+    </footer>
+  </div>
+
+  <script src="js/cursor.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // Accordion for project rows
+    document.querySelectorAll('.project-row[data-expandable]').forEach(row => {
+      row.addEventListener('click', () => {
+        const expand = row.querySelector('.proj-expand');
+        const arrow = row.querySelector('.proj-arrow span:last-child');
+        const isOpen = row.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.project-row[data-expandable]').forEach(r => {
+          r.classList.remove('open');
+          const e = r.querySelector('.proj-expand');
+          const a = r.querySelector('.proj-arrow span:last-child');
+          if (e) e.style.maxHeight = '0';
+          if (e) e.style.paddingBottom = '0';
+          if (a) a.style.transform = 'rotate(0deg)';
+        });
+        if (!isOpen) {
+          row.classList.add('open');
+          expand.style.maxHeight = '400px';
+          expand.style.paddingTop = '1rem';
+          expand.style.paddingBottom = '0.5rem';
+          if (arrow) arrow.style.transform = 'rotate(180deg)';
+        }
+      });
+      // Hover effect
+      row.addEventListener('mouseenter', () => {
+        row.style.background = 'rgba(0,245,196,0.03)';
+        row.style.borderRadius = '4px';
+      });
+      row.addEventListener('mouseleave', () => {
+        row.style.background = '';
+        row.style.borderRadius = '';
+      });
+    });
+  </script>
+</body>
+</html>
