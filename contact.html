@@ -352,7 +352,7 @@
         // POST JSON to the Express backend
         let res;
         try {
-          res = await fetch('http://localhost:3000/send-email', {
+          res = await fetch('/send-email', {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -370,7 +370,7 @@
         // Guard: make sure response is JSON before parsing
         const contentType = res.headers.get('content-type') || '';
         if (!contentType.includes('application/json')) {
-          throw new Error('Server error. Open the page via http://localhost:3000/contact.html instead of opening the file directly.');
+          throw new Error('Server error. Please try again or email: punithkumar062008@gmail.com');
         }
 
         const data = await res.json();
