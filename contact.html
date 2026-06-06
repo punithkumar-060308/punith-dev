@@ -353,37 +353,26 @@
       setLoading(true);
 
       try {
-        // POST JSON to the Express backend
-        let res;
-        try {
-          res = await fetch(`${API_BASE}/send-email`, {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name:    name.value.trim(),
-              email:   email.value.trim(),
-              subject: subject.value.trim() || 'Portfolio Contact',
-              message: message.value.trim(),
-            }),
-          });
-        } catch (networkErr) {
-          // Server not running or unreachable
-          throw new Error('Cannot reach the server. Make sure you ran "npm start" in the portfolio folder or that the deployed backend is reachable.');
-        }
-
-        // Guard: make sure response is JSON before parsing
-        const contentType = res.headers.get('content-type') || '';
-        if (!contentType.includes('application/json')) {
-          throw new Error('Server error. Please try again or email: punithkumar062008@gmail.com');
-        }
+        // POST to Web3Forms API (no backend server needed)
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: 'cdfb724b-b303-46d8-bf35-da1c66094073',
+            name:       name.value.trim(),
+            email:      email.value.trim(),
+            subject:    `[Portfolio] ${subject.value.trim() || 'New message from ' + name.value.trim()}`,
+            message:    message.value.trim(),
+          }),
+        });
 
         const data = await res.json();
 
-        if (res.ok && data.success) {
+        if (data.success) {
           form.style.display       = 'none';
           successBox.style.display = 'block';
         } else {
-          throw new Error(data.error || 'Something went wrong.');
+          throw new Error(data.message || 'Something went wrong.');
         }
       } catch (err) {
         console.error('Form error:', err);
